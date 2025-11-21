@@ -1,106 +1,97 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: ["class"],
-  content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
-  ],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "var(--color-border)", /* light gray */
-        input: "var(--color-input)", /* pure white */
-        ring: "var(--color-ring)", /* trust-building blue */
-        background: "var(--color-background)", /* warm neutral */
-        foreground: "var(--color-foreground)", /* near-black */
-        primary: {
-          DEFAULT: "var(--color-primary)", /* blue-600 trust-building blue */
-          foreground: "var(--color-primary-foreground)", /* white */
-        },
-        secondary: {
-          DEFAULT: "var(--color-secondary)", /* emerald-600 success-oriented green */
-          foreground: "var(--color-secondary-foreground)", /* white */
-        },
-        destructive: {
-          DEFAULT: "var(--color-destructive)", /* red-500 clear red */
-          foreground: "var(--color-destructive-foreground)", /* white */
-        },
-        muted: {
-          DEFAULT: "var(--color-muted)", /* gray-100 */
-          foreground: "var(--color-muted-foreground)", /* medium gray */
-        },
-        accent: {
-          DEFAULT: "var(--color-accent)", /* red-600 security-standard red */
-          foreground: "var(--color-accent-foreground)", /* white */
-        },
-        popover: {
-          DEFAULT: "var(--color-popover)", /* pure white */
-          foreground: "var(--color-popover-foreground)", /* near-black */
-        },
-        card: {
-          DEFAULT: "var(--color-card)", /* pure white */
-          foreground: "var(--color-card-foreground)", /* near-black */
-        },
-        success: {
-          DEFAULT: "var(--color-success)", /* emerald-500 vibrant green */
-          foreground: "var(--color-success-foreground)", /* white */
-        },
-        warning: {
-          DEFAULT: "var(--color-warning)", /* amber-500 educational amber */
-          foreground: "var(--color-warning-foreground)", /* near-black */
-        },
-        error: {
-          DEFAULT: "var(--color-error)", /* red-500 clear red */
-          foreground: "var(--color-error-foreground)", /* white */
-        },
-      },
-      fontFamily: {
-        heading: ["var(--font-heading)"],
-        body: ["var(--font-body)"],
-        caption: ["var(--font-caption)"],
-        data: ["var(--font-data)"],
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      boxShadow: {
-        'subtle': 'var(--shadow-sm)',
-        'elevated': 'var(--shadow-lg)',
-      },
-      transitionDuration: {
-        'fast': '200ms',
-        'normal': '300ms',
-      },
-      transitionTimingFunction: {
-        'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
-}
+import React from 'react';
+import Icon from '../AppIcon';
+import Button from './Button';
+import { cn } from '../../utils/cn';
+
+const ProgressIndicator = ({
+  currentLesson = 1,
+  totalLessons = 1,
+  completedLessons = 0,
+  lessonTitle = '',
+  pathTitle = '',
+  showNavigation = true,
+  onPrevious,
+  onNext,
+  className = ''
+}) => {
+  const progressPercentage = totalLessons > 0 
+    ? (completedLessons / totalLessons) * 100 
+    : 0;
+
+  const currentProgressPercentage = totalLessons > 0 
+    ? ((currentLesson - 1) / totalLessons) * 100 
+    : 0;
+
+  return (
+    <div className={cn("flex items-center justify-between gap-4", className)}>
+      {/* Left side - Path and Lesson info */}
+      <div className="flex-1 min-w-0">
+        {pathTitle && (
+          <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-1">
+            <Icon name="BookOpen" size={14} />
+            <span className="truncate">{pathTitle}</span>
+          </div>
+        )}
+        {lessonTitle && (
+          <h2 className="text-lg font-semibold text-foreground truncate">
+            {lessonTitle}
+          </h2>
+        )}
+        
+        {/* Progress bar */}
+        <div className="mt-3 space-y-1">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span>
+              Lesson {currentLesson} of {totalLessons}
+            </span>
+            <span>
+              {completedLessons} of {totalLessons} completed
+            </span>
+          </div>
+          <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+            {/* Overall progress */}
+            <div 
+              className="h-full bg-success transition-all duration-300"
+              style={{ width: `${progressPercentage}%` }}
+            />
+            {/* Current lesson progress indicator */}
+            {currentProgressPercentage > 0 && (
+              <div 
+                className="h-full bg-primary transition-all duration-300 -mt-2"
+                style={{ width: `${Math.min(currentProgressPercentage, 100)}%` }}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Right side - Navigation buttons */}
+      {showNavigation && (
+        <div className="flex items-center space-x-2 flex-shrink-0">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onPrevious}
+            iconName="ChevronLeft"
+            iconPosition="left"
+            disabled={currentLesson <= 1}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={onNext}
+            iconName="ChevronRight"
+            iconPosition="right"
+            disabled={currentLesson >= totalLessons}
+          >
+            Next
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProgressIndicator;

@@ -339,8 +339,8 @@ const LearningPathCatalog = () => {
   };
 
   const handleBookmark = (pathId) => {
+    // TODO: Implement bookmark functionality
     // Mock bookmark functionality
-    console.log('Bookmarked path:', pathId);
   };
 
   return (

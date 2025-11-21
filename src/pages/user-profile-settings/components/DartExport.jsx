@@ -144,8 +144,8 @@ const DataExport = () => {
   };
 
   const handleDownload = (exportItem) => {
+    // TODO: Implement download functionality
     // Simulate download
-    console.log('Downloading:', exportItem);
   };
 
   const handleDeleteExport = (exportId) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
-import Input from '../../../components/ui/Input';
+import Input from '../../../components/ui/input';
 import Select from '../../../components/ui/Select';
 
 const ProfileInformation = () => {

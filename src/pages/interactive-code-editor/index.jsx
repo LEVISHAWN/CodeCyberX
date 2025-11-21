@@ -7,7 +7,7 @@ import CodeEditor from './components/CodeEditor';
 import VulnerabilityPanel from './components/VulnerabilityPanel';
 import ConsoleOutput from './components/ConsoleOutput';
 import EditorToolbar from './components/EditorToolbar';
-import CodeTemplates from './components/CodeTemplates';
+import CodeTemplates from './components/CodeTemplate';
 
 const InteractiveCodeEditor = () => {
   const [code, setCode] = useState('');

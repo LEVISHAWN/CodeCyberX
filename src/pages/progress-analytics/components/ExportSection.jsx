@@ -34,9 +34,8 @@ const ExportSection = () => {
     // Simulate export process
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Mock download trigger
+    // TODO: Implement actual export/download functionality
     const filename = `securecodehub-analytics-${new Date()?.toISOString()?.split('T')?.[0]}.${selectedFormat}`;
-    console.log(`Exporting ${filename} with data:`, selectedData);
     
     setIsExporting(false);
   };
@@ -177,7 +176,9 @@ const ExportSection = () => {
                 key={option?.id}
                 variant="outline"
                 className="flex items-center justify-center space-x-2 h-12"
-                onClick={() => console.log(`Sharing to ${option?.label}`)}
+                onClick={() => {
+                  // TODO: Implement social sharing functionality
+                }}
               >
                 <Icon name={option?.icon} size={18} className={option?.color} />
                 <span className="text-sm">{option?.label}</span>

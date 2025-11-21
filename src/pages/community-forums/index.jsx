@@ -319,7 +319,7 @@ const CommunityForums = () => {
   };
 
   const handleCreatePost = (postData) => {
-    console.log('Creating new post:', postData);
+    // TODO: Implement post creation API call
     // Mock post creation - in real app, this would make an API call
   };
 

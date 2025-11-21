@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Icon from '../../../components/AppIcon';
-import Input from '../../../components/ui/Input';
+import Input from '../../../components/ui/input';
 import Button from '../../../components/ui/Button';
 
 const SearchBar = ({

@@ -175,7 +175,7 @@ db.query(query, values, (err, results) => {
   const handleQuizComplete = (results) => {
     if (results?.passed) {
       // Mark section as completed
-      console.log('Quiz completed successfully:', results);
+      // TODO: Implement quiz completion tracking
     }
   };
 

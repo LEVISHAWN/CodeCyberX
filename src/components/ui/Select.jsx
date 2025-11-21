@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ChevronDown, Check, Search, X } from "lucide-react";
 import { cn } from "../../utils/cn";
 import Button from "./Button";
-import Input from "./Input";
+import Input from "./input";
 
 const Select = React.forwardRef(({
     className,

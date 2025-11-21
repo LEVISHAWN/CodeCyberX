@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
-import Input from '../../../components/ui/Input';
+import Input from '../../../components/ui/input';
 
 
 const AccountSecurity = () => {
@@ -124,17 +124,17 @@ const AccountSecurity = () => {
 
   const handleRevokeSession = (sessionId) => {
     // Handle session revocation
-    console.log('Revoking session:', sessionId);
+    // TODO: Implement session revocation logic
   };
 
   const handleConnectAccount = (provider) => {
     // Handle OAuth connection
-    console.log('Connecting to:', provider);
+    // TODO: Implement OAuth connection logic
   };
 
   const handleDisconnectAccount = (provider) => {
     // Handle OAuth disconnection
-    console.log('Disconnecting from:', provider);
+    // TODO: Implement OAuth disconnection logic
   };
 
   return (
