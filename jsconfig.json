@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src"
+  }
+}
+
+/*
+  jsconfig.json notes
+
+  - `baseUrl: ./src` allows absolute imports from the `src` folder, e.g.
+    `import Button from 'components/ui/Button'` instead of long relative paths.
+  - `vite-tsconfig-paths` plugin reads this (or `tsconfig.json`) to make the
+    aliasing work in Vite.
+  - If you add TypeScript files, consider adding a `tsconfig.json` and moving
+    this configuration there.
+*/

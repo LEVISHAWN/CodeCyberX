@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<!--
+  Root HTML document for the SecureCodeHub single-page app.
+
+  Notes for developers:
+  - Vite uses this file as the template during dev and build.
+  - React mounts inside <div id="root">.
+  - Keep global meta, favicons, and CSP here.
+  - External scripts loaded as modules are included below; evaluate and
+    remove any third-party scripts you do not need.
+-->
+
+<head>
+  <meta charset="utf-8" />
+  <title>securecodehub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="SecureCodeHub — a learning and community platform" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- External scripts used by Rocket.new. Keep or remove as required. -->
+  <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsecurecode1059back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  <script type="module" src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+</head>
+
+<body>
+  <!-- If JavaScript is disabled the SPA will not run. -->
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- React mounts here. Keep id="root". -->
+  <div class="dhiwise-code" id="root"></div>
+
+  <!-- Vite will serve /src/index.jsx in dev and replace with optimized assets in production -->
+  <script type="module" src="/src/index.jsx"></script>
+</body>
+
+</html>
